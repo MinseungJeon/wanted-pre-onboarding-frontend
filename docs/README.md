@@ -1,0 +1,1 @@
+git clone 후 npm install or yarn => npm start or yarn start
