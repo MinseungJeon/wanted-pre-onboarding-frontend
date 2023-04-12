@@ -112,6 +112,11 @@ const Todo = () => {
     updateTodo(index);
   };
 
+  const handleCancelTodo = () => {
+    setEditingIndex(-1);
+    setEditingValue("");
+  };
+
   useEffect(() => {
     getTodos();
   }, []);
@@ -136,11 +141,7 @@ const Todo = () => {
               </>
             ) : (
               <>
-                <input
-                  type="checkbox"
-                  value={todo.isCompleted}
-                  checked={todo.isCompleted}
-                />
+                <input type="checkbox" defaultChecked={todo.isCompleted} />
 
                 <span onClick={() => handleEditTodo(todo.id)}>{todo.todo}</span>
               </>
@@ -169,7 +170,9 @@ const Todo = () => {
               삭제
             </button>
           ) : (
-            <button data-testid="cancel-button">취소</button>
+            <button data-testid="cancel-button" onClick={handleCancelTodo}>
+              취소
+            </button>
           )}
         </li>
       ))}

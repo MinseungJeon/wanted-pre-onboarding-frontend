@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import instance from "../apis";
@@ -105,7 +104,12 @@ function Signin() {
       <button
         type="submit"
         data-testid="signin-button"
-        disabled={emailError !== "" || passwordError !== ""}
+        disabled={
+          email === "" ||
+          password === "" ||
+          emailError !== "" ||
+          passwordError !== ""
+        }
       >
         로그인
       </button>

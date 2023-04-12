@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import instance from "../apis";
@@ -96,7 +95,12 @@ function Signup() {
       <button
         type="submit"
         data-testid="signup-button"
-        disabled={emailError !== "" || passwordError !== ""}
+        disabled={
+          email === "" ||
+          password === "" ||
+          emailError !== "" ||
+          passwordError !== ""
+        }
       >
         회원가입
       </button>
