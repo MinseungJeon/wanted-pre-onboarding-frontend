@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import instance from "../apis";
 
-const token = localStorage.getItem("token");
-
 const Todo = () => {
+  const token = localStorage.getItem("token");
+
   const [todos, setTodos] = useState([]);
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editingValue, setEditingValue] = useState("");
   const [editingCheck, setEditingCheck] = useState("");
+
+  const navigate = useNavigate();
 
   const handleAddTodo = () => {
     // 입력된 TODO를 TODO 리스트에 추가
@@ -118,8 +121,12 @@ const Todo = () => {
   };
 
   useEffect(() => {
-    getTodos();
-  }, []);
+    if (token) {
+      getTodos();
+    } else {
+      navigate("/signin")
+    }
+  }, [token]);
 
   return (
     <>

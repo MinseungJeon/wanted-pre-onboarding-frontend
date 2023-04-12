@@ -66,14 +66,14 @@ function Signin() {
         });
     }
   };
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     if (token) {
       // 로컬 스토리지에 토큰이 있을 경우, /todo 경로로 이동
       navigate("/todo");
     }
-  }, []);
+  }, [token]);
 
   return (
     <form onSubmit={handleSubmit}>
