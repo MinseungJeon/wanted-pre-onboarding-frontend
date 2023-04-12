@@ -13,6 +13,7 @@ import Signup from "./pages/Signup";
 import Todo from "./pages/Todo";
 
 const router = createBrowserRouter(
+  { routes, basename: "/wanted-pre-onboarding-frontend" },
   createRoutesFromElements(
     <>
       <Route path="/" element={<Home />} />
